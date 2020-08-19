@@ -85,7 +85,6 @@ def precipitation():
 
     return jsonify(all_precipitation)
 
-
 @app.route("/api/v1.0/stations")
 def stations():
     """List of Weather Stations"""
@@ -117,8 +116,7 @@ def tobs():
     first_date = last_date - timedelta(days=365)
     
     # List the stations and the counts in descending order.
-    station_counts = session.query(Measurement.station, func.count(Measurement.station)).group_by(Measurement.station).order_by(func.count(Measurement.station).desc()).all()
-     
+    station_counts = session.query(Measurement.station, func.count(Measurement.station)).group_by(Measurement.station).order_by(func.count(Measurement.station).desc()).all()   
         
     # Create top station variable from tuple
     top_station = (station_counts[0])
